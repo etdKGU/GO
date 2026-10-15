@@ -1,0 +1,17 @@
+{{define "content"}}
+<h1>Мои траты</h1>
+<table border="1">
+    <tr>
+        <th>Дата</th>
+        <th>Описание</th>
+        <th>Сумма</th>
+    </tr>
+    {{range .}}
+    <tr>
+        <td>{{.Date}}</td>
+        <td>{{.Description}}</td>
+        <td>{{.Amount}}</td>
+    </tr>
+    {{end}}
+</table>
+{{end}}
