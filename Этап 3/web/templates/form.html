@@ -1,0 +1,23 @@
+{{define "content"}}
+<h1>Добавить трату</h1>
+<form method="POST" action="/expenses/new">
+    <p>
+        <label>Сумма:
+            <input type="number" name="amount" step="0.01" min="0.01" required
+                oninvalid="this.setCustomValidity('Сумма должна быть больше 0')" oninput="this.setCustomValidity('')">
+        </label>
+    </p>
+    <p>
+        <label>Описание:
+            <input type="text" name="description" required maxlength="200" pattern=".*\S.*"
+                oninvalid="this.setCustomValidity('Введите описание траты')" oninput="this.setCustomValidity('')">
+        </label>
+    </p>
+    <p>
+        <label>Дата:
+            <input type="date" name="date" required>
+        </label>
+    </p>
+    <button type="submit">Добавить</button>
+</form>
+{{end}}
