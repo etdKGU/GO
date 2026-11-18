@@ -1,0 +1,27 @@
+{{define "content"}}
+<h1>Вход</h1>
+
+{{if .Error}}
+<div class="popup-overlay" id="popup">
+    <div class="popup">
+        <p>{{.Error}}</p>
+        <button type="button" onclick="document.getElementById('popup').remove()">OK</button>
+    </div>
+</div>
+{{end}}
+
+<form method="POST" action="/login">
+    <p>
+        <label>Email:
+            <input type="email" name="email" required value="{{.Email}}">
+        </label>
+    </p>
+    <p>
+        <label>Пароль:
+            <input type="password" name="password" required>
+        </label>
+    </p>
+    <button type="submit">Войти</button>
+</form>
+<p>Нет аккаунта? <a href="/register">Зарегистрироваться</a></p>
+{{end}}

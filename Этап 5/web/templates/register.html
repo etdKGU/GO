@@ -1,0 +1,26 @@
+{{define "content"}}
+<h1>Регистрация</h1>
+
+{{if .Error}}
+<div class="popup-overlay" id="popup">
+    <div class="popup">
+        <p>{{.Error}}</p>
+        <button type="button" onclick="document.getElementById('popup').remove()">OK</button>
+    </div>
+</div>
+{{end}}
+
+<form method="POST" action="/register">
+    <p>
+        <label>Email:
+            <input type="email" name="email" required value="{{.Email}}">
+        </label>
+    </p>
+    <p>
+        <label>Пароль (от 6 символов):
+            <input type="password" name="password" required minlength="6">
+        </label>
+    </p>
+    <button type="submit">Зарегистрироваться</button>
+</form>
+{{end}}

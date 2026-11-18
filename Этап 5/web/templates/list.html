@@ -1,0 +1,51 @@
+{{define "content"}}
+<h1>Мои траты</h1>
+<form method="GET" action="/expenses">
+    <label>Категория:
+        <select name="category">
+            <option value="">Все категории</option>
+            {{range .Categories}}
+            <option value="{{.ID}}" {{if eq .ID $.Filter.CategoryID}}selected{{end}}>{{.Name}}</option>
+            {{end}}
+        </select>
+    </label>
+    <label>От:
+        <input type="date" name="from" value="{{.Filter.From}}">
+    </label>
+    <label>До:
+        <input type="date" name="to" value="{{.Filter.To}}">
+    </label>
+    <button type="submit">Найти</button>
+    <a href="/expenses">Сбросить</a>
+</form>
+<table border="1">
+    <tr>
+        <th>Дата</th>
+        <th>Описание</th>
+        <th>Категория</th>
+        <th>Сумма</th>
+        <th>Действия</th>
+    </tr>
+    {{range .Expenses}}
+    <tr>
+        <td>{{.Date}}</td>
+        <td>{{.Description}}</td>
+        <td>{{.CategoryName}}</td>
+        <td>{{.Amount}}</td>
+        <td>
+            <div class="actions">
+                <form method="GET" action="/expenses/edit">
+                    <input type="hidden" name="id" value="{{.ID}}">
+                    <button type="submit">Изменить</button>
+                </form>
+
+                <form method="POST" action="/expenses/delete" onsubmit="return confirm('Удалить эту трату?')">
+                    <input type="hidden" name="id" value="{{.ID}}">
+                    <button type="submit">Удалить</button>
+                </form>
+            </div>
+        </td>
+    </tr>
+    {{end}}
+</table>
+{{end}}
