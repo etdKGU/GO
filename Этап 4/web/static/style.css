@@ -1,0 +1,21 @@
+body {
+    font-family: sans-serif;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+nav {
+    display: flex;
+    gap: 40px;
+}
+
+nav a {
+    flex: 1;
+    text-align: center;
+}
+
+.actions {
+    display: flex;
+    gap: 8px;
+}
